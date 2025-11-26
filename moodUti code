@@ -1,33 +1,35 @@
 public final class MoodUti {
 
     private MoodUti() {
-
     }
 
     public static String analyzeMood(String input) {
-        if (input == null  input.trim().isEmpty()) {
+        if (input == null || input.trim().isEmpty()) {
             return "NEUTRAL";
         }
 
         String sentenceInput = input.toLowerCase().trim();
 
-     
+        String[] negationWords = {"not", "never", "no", "n't", "wasn't", "isn't"};
+        boolean isNegated = false;
+
+        for (String neg : negationWords) {
+            if (sentenceInput.contains(neg)) {
+                isNegated = true;
+                break;
+            }
+        }
 
         String result;
 
-        if (sentenceInput.contains("happy")  sentenceInput.contains("great")) {
-
-           result ="POSITIVE";
-
+        if (sentenceInput.contains("happy") || sentenceInput.contains("great")) {
+            result = isNegated ? "NEGATIVE" : "POSITIVE"; 
         } else if (sentenceInput.contains("sad") || sentenceInput.contains("angry")) {
-
-           result =  "NEGATIVE";
-
+            result = isNegated ? "NEUTRAL" : "NEGATIVE";
         } else {
             result = "NEUTRAL";
         }
 
         return result;
     }
-
 }

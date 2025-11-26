@@ -22,9 +22,12 @@ public final class MoodUti {
 
         String result;
 
-        if (sentenceInput.contains("happy") || sentenceInput.contains("great")) {
+        if (sentenceInput.contains("happy") || sentenceInput.contains("great") ||sentenceInput.contains("good")  ||sentenceInput.contains("amazing") 
+         || sentenceInput.contains("blessed")) {
             result = isNegated ? "NEGATIVE" : "POSITIVE"; 
-        } else if (sentenceInput.contains("sad") || sentenceInput.contains("angry")) {
+        } else if (sentenceInput.contains("sad") || sentenceInput.contains("angry")||
+          sentenceInput.contains("depressed")  ||sentenceInput.contains("stressed") 
+         || sentenceInput.contains("crying")) {
             result = isNegated ? "NEUTRAL" : "NEGATIVE";
         } else {
             result = "NEUTRAL";
